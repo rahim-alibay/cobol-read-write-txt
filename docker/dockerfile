@@ -1,0 +1,26 @@
+# Pull base image.
+FROM ubuntu:latest
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Install.
+RUN \
+  apt-get update && \
+  apt-get -yq upgrade && \
+  apt-get install -y build-essential open-cobol gcc && \
+  apt-get install -y software-properties-common && \
+  apt-get install -y vim wget nano zip unzip curl && \
+  mkdir my_src  && \
+  apt-get clean && \
+  echo "#!/bin/bash" > script.sh && \
+  echo "while true" >> script.sh && \
+  echo "do" >> script.sh && \
+  echo "echo '.'" >> script.sh && \
+  echo "done" >> script.sh
+
+ENV HOME /root
+
+WORKDIR /my_src
+
+EXPOSE 80
+
+CMD ["bash","./run.sh"]

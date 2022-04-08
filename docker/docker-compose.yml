@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+
+  UBUNTU_TUTO_COBOL_1:
+    container_name: UBUNTU_TUTO_COBOL_1
+    image: UBUNTU_TUTO_COBOL_1
+    networks:
+      myapp:
+        aliases:
+          - UBUNTU_TUTO_COBOL_1
+    #ports:
+    #  - 8561:80
+    volumes:
+      - ./../src:/my_src
+    restart: always
+
+networks:
+  UBUNTU_TUTO_COBOL_1:
